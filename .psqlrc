@@ -1,0 +1,18 @@
+\set QUIET 1
+
+\x auto
+
+/* Display [null] instead of nothing when  query returns nothing */
+\pset null '[null]'
+
+/* Autocomplete SELECT, WHERE to uppercase */
+\set COMP_KEYWORD_CASE upper
+
+/* Show Query times */
+\timing
+
+/* Allow a large file history */
+\set HISTSIZE 2000
+
+/* Apply all extentions in DB to shell */
+\set extensions 'select * from pg_available_extensions;'
