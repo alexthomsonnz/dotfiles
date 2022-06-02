@@ -19,9 +19,19 @@ brew install postgresql
 brew install pgcli
 brew install redis
 # Fish/CLI
-brew install z
 brew install fish
 # Ops
 brew install awscli
 brew install heroku
+```
+
+# Fish setup
+
+```bash
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+
+omf install z
+
+omf install agnoster
+omf theme agnoster
 ```

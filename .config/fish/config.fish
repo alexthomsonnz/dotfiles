@@ -5,12 +5,12 @@ end
 source ~/.config/fish/aliases.fish
 
 
-set -g -x ENVIRONMENT "development"
-set -g -x PGUSER "alex"
+set -g -x ENVIRONMENT development
+set -g -x PGUSER alex
 
 if test -d venv
-	set -g -x VIRTUAL_ENV (pwd)"/venv"
-	source venv/bin/activate.fish
+    set -g -x VIRTUAL_ENV (pwd)"/venv"
+    source venv/bin/activate.fish
 end
 
 # Custoom fish support for fish
@@ -41,7 +41,7 @@ set -g fish_color_valid_path --underline
 set -g fish_color_separator 999
 
 # Git prompt status
-set -g __fish_git_prompt_showdirtystate 'yes'
+set -g __fish_git_prompt_showdirtystate yes
 set -g __fish_git_prompt_showupstream auto
 set -g pure_git_untracked_dirty false
 
@@ -58,8 +58,9 @@ set __fish_git_prompt_char_upstream_equal ''
 set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 set __fish_git_prompt_color_branch yellow
-set __fish_git_prompt_color_dirtystate 'red'
+set __fish_git_prompt_color_dirtystate red
 
 set __fish_git_prompt_color_upstream_ahead ffb90f
 set __fish_git_prompt_color_upstream_behind blue
 
+set -g -x fish_greeting ''
