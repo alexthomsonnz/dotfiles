@@ -16,8 +16,9 @@ git clone https://github.com/alexthomsonnz/dotfiles.git && cd dotfiles && ./sync
 brew install git
 # DB
 brew install postgresql
-brew install pgcli
 brew install redis
+brew install pgcli
+brew install iredis
 # Fish/CLI
 brew install fish
 # Ops
