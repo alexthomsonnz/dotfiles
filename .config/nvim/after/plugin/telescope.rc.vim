@@ -1,23 +1,27 @@
 if !exists('g:loaded_telescope') | finish | endif
 
-nnoremap <silent> ;f <cmd>Telescope find_files<cr>
-nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
-nnoremap <silent> \\ <cmd>Telescope buffers<cr>
-nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
-
 lua << EOF
 local actions = require('telescope.actions')
 -- Global remapping
 ------------------------------
-require('telescope').setup{
+require('telescope').setup {
   defaults = {
+    color_devicons = true,
+    prompt_prefix = " >",
     mappings = {
       n = {
         ["q"] = actions.close
+        },
       },
-    },
     file_ignore_patterns = { "node_modules" }
-  }
+  },
+  pickers = {
+    find_files = {
+      theme = "dropdown",
+    }
+  },
+
 }
-EOF
+
+require('telescope').load_extension('fzy_native')
 

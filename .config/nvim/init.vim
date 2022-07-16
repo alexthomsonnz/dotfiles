@@ -138,5 +138,9 @@ endif
 " Extras 
 set exrc
 
+" Setup ripgrep for Telescope live_grep
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
 
 " vim: set foldmethod=marker foldlevel=0:

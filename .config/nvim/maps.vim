@@ -63,10 +63,22 @@ nmap <C-w><down> <C-w>-
 
 "------------------------------
 " Custom functions
-nnoremap <M-j> :move +1
-nnoremap <M-k> :move -1
+nnoremap <A-j> :m .+1<CR>
+nnoremap <A-k> :m .-2<CR>
+nnoremap <A-Down> :m .+1<CR>
+nnoremap <A-Up> :m .-2<CR>
 
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+
+"------------------------------
+" Telescope
+
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-S-f> <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
+"------------------------------
+" fzf fuzzy find
+nnoremap <D-p> <cmd>fzf --height 50%<cr>
+

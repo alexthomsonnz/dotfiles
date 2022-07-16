@@ -23,8 +23,13 @@ if has("nvim")
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
   Plug 'overcache/NeoSolarized'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'famiu/nvim-reload'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'APZelos/blamer.nvim'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
