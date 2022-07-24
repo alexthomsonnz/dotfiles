@@ -15,7 +15,9 @@ require'nvim-treesitter.configs'.setup {
   },
   ensure_installed = {
     "tsx",
-    "ts",
+    "typescript",
+    "javascript",
+    "markdown",
     "toml",
     "fish",
     "json",
@@ -23,10 +25,7 @@ require'nvim-treesitter.configs'.setup {
     "swift",
     "html",
     "scss",
-    "py"
+    "python"
   },
 }
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
-EOF

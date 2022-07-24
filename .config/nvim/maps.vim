@@ -1,22 +1,13 @@
 " Description: Keymaps
 
-nnoremap <S-C-p> "0p
+nnoremap <S-C-p> "-2p
 " Delete without yank
 nnoremap <leader>d "_d
 nnoremap x "_x
 
-" Increment/decrement
-nnoremap + <C-a>
-nnoremap - <C-x>
-
-" Delete a word backwards
-nnoremap dw vb"_d
-
 " Select all
 nmap <C-a> gg<S-v>G
 
-" Save with root permission
-command! W w !sudo tee > /dev/null %
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -34,7 +25,7 @@ vnoremap <silent> # :<C-U>
 " Tabs
 
 " Open current directory
-nmap <T-E> :tabedit
+nmap te :tabedit <Return>
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
 
@@ -63,10 +54,10 @@ nmap <C-w><down> <C-w>-
 
 "------------------------------
 " Custom functions
-nnoremap <A-j> :m .+1<CR>
-nnoremap <A-k> :m .-2<CR>
-nnoremap <A-Down> :m .+1<CR>
-nnoremap <A-Up> :m .-2<CR>
+nnoremap <A-j> :m .+-1<CR>
+nnoremap <A-k> :m .-4<CR>
+nnoremap <A-Down> :m .+-1<CR>
+nnoremap <A-Up> :m .-4<CR>
 
 
 "------------------------------
@@ -80,5 +71,9 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "------------------------------
 " fzf fuzzy find
-nnoremap <D-p> <cmd>fzf --height 50%<cr>
+nnoremap <D-p> <cmd>fzf --height 48%<cr>
 
+
+"------------------------------
+" nvim-tree file explorer
+nnoremap <C-b> <cmd>:NvimTreeToggle <cr>
