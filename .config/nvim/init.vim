@@ -8,12 +8,10 @@ if !1 | finish | endif
 
 set nocompatible
 set number
-syntax enable
 set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
 set autoindent
-set background=dark
 set nobackup
 set hlsearch
 set showcmd
@@ -21,13 +19,13 @@ set cmdheight=1
 set laststatus=2
 set scrolloff=10
 set expandtab
-"let loaded_matchparen = 1
+set mouse=nicr
 set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
 
 " incremental substitution (neovim)
 if has('nvim')
-  set inccommand=split
+    set inccommand=split
 endif
 
 " Suppress appending <PasteStart> and <PasteEnd> when pasting
@@ -66,81 +64,76 @@ set formatoptions+=r
 set cursorline
 "set cursorcolumn
 
-" Set cursor line color on visual mode
-highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
-
-highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
-
-augroup BgHighlight
-  autocmd!
-  autocmd WinEnter * set cul
-  autocmd WinLeave * set nocul
-augroup END
-
 if &term =~ "screen"
-  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
-  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
+    autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+    autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
 endif
-
-
-
-" File types 
-" JavaScript
-au BufNewFile,BufRead *.es6 setf javascript
-" TypeScript
-au BufNewFile,BufRead *.tsx setf typescriptreact
-" Markdown
-au BufNewFile,BufRead *.md set filetype=markdown
-" Flow
-au BufNewFile,BufRead *.flow set filetype=javascript
-
-set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
-
-autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-
 
 
 " Imports 
 runtime ./plug.vim
 if has("unix")
-  let s:uname = system("uname -s")
-  " Do Mac stuff
-  if s:uname == "Darwin\n"
-    runtime ./macos.vim
-  endif
+    let s:uname = system("uname -s")
+    " Do Mac stuff
+    if s:uname == "Darwin\n"
+        runtime ./macos.vim
+    endif
 endif
 
 runtime ./maps.vim
 
-lua require('init')
-" lua require('autocompletion')
-" lua require('lsp-config')
+if !exists('g:vscode')
+    lua require('init')
+    lua require('lsp-config')
+ 
+    " File types 
+    " JavaScript
+    au BufNewFile,BufRead *.es6 setf javascript
+    " TypeScript
+    au BufNewFile,BufRead *.tsx setf typescriptreact
+    " Markdown
+    au BufNewFile,BufRead *.md set filetype=markdown
+    " Flow
+    au BufNewFile,BufRead *.flow set filetype=javascript
+    autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+    autocmd FileType yaml setlocal shiftwidth=2 ta
+    set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
-
-" Syntax theme 
-
-" true color
-if exists("&termguicolors") && exists("&winblend")
-  syntax enable
-  set termguicolors
-  set winblend=0
-  set wildoptions=pum
-  set pumblend=5
-  set background=dark
-  let g:neosolarized_termtrans=1
-  colorscheme NeoSolarized
+    " Setup ripgrep for Telescope live_grep
+    if executable('rg')
+        let g:rg_derive_root='true'
+    endif
 endif
 
-"}}}
+" Syntax theme 
+if exists("&termguicolors") && exists("&winblend") && !exists('g:vscode') 
+    " Set cursor line color on visual mode
+    highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
+    highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+
+    augroup BgHighlight
+        autocmd!
+        autocmd WinEnter * set cul
+        autocmd WinLeave * set nocul
+    augroup END
+
+    syntax enable
+    set termguicolors
+    set winblend=0
+    set wildoptions=pum
+    set pumblend=5
+    set background=dark
+    let g:neosolarized_termtrans=1
+    colorscheme NeoSolarized
+
+endif
+
+if exists('g:vscode')
+    syntax off
+endif
 
 " Extras 
 set exrc
 
-" Setup ripgrep for Telescope live_grep
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
 
 " vim: set foldmethod=marker foldlevel=0:
