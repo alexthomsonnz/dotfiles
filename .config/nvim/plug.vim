@@ -17,7 +17,6 @@ if has("nvim")
     Plug 'glepnir/lspsaga.nvim'
     Plug 'kabouzeid/nvim-lspinstall'
     Plug 'folke/lsp-colors.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'hrsh7th/cmp-buffer' " nvim-cmp source for buffer words
     Plug 'hrsh7th/cmp-nvim-lsp' " nvim-cmp source for neovim's built-in LSP
     Plug 'hrsh7th/nvim-cmp' " Completion
@@ -28,6 +27,7 @@ if has("nvim")
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzy-native.nvim'
     Plug 'overcache/NeoSolarized'
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'famiu/nvim-reload'

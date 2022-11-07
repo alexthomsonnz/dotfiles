@@ -22,6 +22,7 @@ set expandtab
 set mouse=nicr
 set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
+set relativenumber
 
 " incremental substitution (neovim)
 if has('nvim')
@@ -71,7 +72,6 @@ endif
 
 
 " Imports 
-runtime ./plug.vim
 if has("unix")
     let s:uname = system("uname -s")
     " Do Mac stuff
@@ -83,8 +83,9 @@ endif
 runtime ./maps.vim
 
 if !exists('g:vscode')
-    lua require('init')
+    runtime ./plug.vim
     lua require('lsp-config')
+    lua require('init')
  
     " File types 
     " JavaScript

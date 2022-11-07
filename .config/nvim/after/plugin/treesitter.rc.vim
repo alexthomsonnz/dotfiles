@@ -25,7 +25,13 @@ require'nvim-treesitter.configs'.setup {
     "swift",
     "html",
     "scss",
-    "python"
+    "python",
+    "rust",
+    "c_sharp",
+    "dockerfile",
+    "make",
+    "regex",
   },
+  auto_install = true,
 }
 
