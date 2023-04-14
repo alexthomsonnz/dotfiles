@@ -8,21 +8,27 @@ if !1 | finish | endif
 
 set nocompatible
 set number
+set guicursor=i-ci:blinkon50-ver2
 set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
+set hidden
 set autoindent
 set nobackup
-set hlsearch
+set nohlsearch
+set noswapfile
+set undodir=~/.config/nvim/undoDir
+set undofile
 set showcmd
 set cmdheight=1
 set laststatus=2
-set scrolloff=10
+set scrolloff=8
 set expandtab
 set mouse=nicr
 set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
 set relativenumber
+set signcolumn
 
 " incremental substitution (neovim)
 if has('nvim')
@@ -40,15 +46,14 @@ set lazyredraw
 "set mat=2
 " Ignore case when searching
 set ignorecase
-" Be smart when using tabs ;)
 set smarttab
 " indents
 filetype plugin indent on
 set shiftwidth=2
 set tabstop=2
-set ai "Auto indent
-set si "Smart indent
-set nowrap "No Wrap lines
+set autoindent 
+set smartindent 
+set nowrap 
 set backspace=start,eol,indent
 " Finding files - Search down into subfolders
 set path+=**
@@ -63,7 +68,7 @@ set formatoptions+=r
 
 " Highlights "
 set cursorline
-"set cursorcolumn
+set nocursorcolumn
 
 if &term =~ "screen"
     autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
@@ -108,15 +113,6 @@ endif
 
 " Syntax theme 
 if exists("&termguicolors") && exists("&winblend") && !exists('g:vscode') 
-    " Set cursor line color on visual mode
-    highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
-    highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
-
-    augroup BgHighlight
-        autocmd!
-        autocmd WinEnter * set cul
-        autocmd WinLeave * set nocul
-    augroup END
 
     syntax enable
     set termguicolors
@@ -124,16 +120,11 @@ if exists("&termguicolors") && exists("&winblend") && !exists('g:vscode')
     set wildoptions=pum
     set pumblend=5
     set background=dark
-    let g:neosolarized_termtrans=1
-    colorscheme NeoSolarized
-
+    colorscheme monokai_soda
 endif
 
-if exists('g:vscode')
-    syntax off
-endif
 
-" Extras 
+" use vimrc if it's in a directory
 set exrc
 
 

@@ -1,10 +1,13 @@
+local status, nvimtree = pcall(require, "nvim-tree")
+if (not status) then return end
+
 vim.cmd("hi NvimTreeFolderIcon guifg = #61afef")
 vim.cmd("hi NvimTreeFolderName guifg = #61afef")
 vim.cmd("hi NvimTreeIndentMarker guifg=#545862")
 
 vim.o.termguicolors = true
 
-require 'nvim-tree'.setup {
+nvimtree.setup {
     disable_netrw       = true,
     hijack_netrw        = true,
     open_on_setup       = true,
