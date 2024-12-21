@@ -14,7 +14,6 @@ else
 	fi
 fi
 unset doIt
-source ~/.bash_profile
 
 
 # Install Brew if not exists
@@ -24,18 +23,22 @@ end
 
 brew install git
 brew install fish
+brew install fnm
 
 brew install postgresql
-brew install awscli
-
+brew install pspg
 brew tap dbcli/tap
 brew install pgcli
 
+brew install awscli
+brew install flyctl
 
-brew tap heroku/brew
-brew install heroku
 
 # Setup omf
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 omf install z
 omf install agnoster
+
+# Setup fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fisher install meaningful-ooo/sponge
