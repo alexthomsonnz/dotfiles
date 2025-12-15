@@ -17,9 +17,9 @@ unset doIt
 
 
 # Install Brew if not exists
-if not type -f -1 brew
+if ! command -v brew &> /dev/null; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-end
+fi
 
 brew install git
 brew install fish
