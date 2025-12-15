@@ -90,3 +90,7 @@ set -gx PATH "/opt/homebrew/bin" "/opt/homebrew/sbin" $PATH
 set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/opt/homebrew/share/man" $MANPATH;
 set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/opt/homebrew/share/info" $INFOPATH;
 
+# pspg setup
+set -g -x PSQL_PAGER pspg
+set -g -x PSPG "--quit-if-one-screen --csv -X --ignore-case --csv-header on --pgcli-fix --style=16 --csv-trim-rows=1"
+
